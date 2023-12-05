@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('admin')->group(function(){
 
-    Route::get('dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
+    Route::get('dashboard',[DashboardController::class, 'index']);
 });
