@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('meta_keyword');
             $table->mediumText('meta_description');
 
-            $table->tinyInteger('status')->default('0')->comment('0=visible, 1=hidden');
+            $table->tinyInteger('status')->default('1')->comment('1=visible, 0=hidden');
             $table->timestamps();
         });
     }
