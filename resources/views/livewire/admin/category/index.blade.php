@@ -24,7 +24,7 @@
                     <tr>
                         <td>{{$category->id}}</td>
                         <td>{{$category->name}}</td>
-                        <td>{{$category->status =='1' ? 'Hidden':'Visible'}}</td>
+                        <td>{{$category->status =='1' ? 'Visible':'Hidden'}}</td>
                         <td>
                             <a href="{{url('admin/category/'.$category->id.'/edit')}}" class="btn btn-success">Edit</a>
                             <a href="" class="btn btn-danger">Delete</a>
