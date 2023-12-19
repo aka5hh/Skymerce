@@ -5,7 +5,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Livewire\Admin\Brand;
+// use App\Livewire\Admin\Brand;
+use App\Http\Controllers\Admin\BrandController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,5 +39,8 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
         Route::put('/category/{category}','update');
     });
 
-    Route::get('/brands', Brand\Index::class );
+    //brand routes
+    Route::controller(BrandController::class)->group(function(){
+    Route::get('/brands', 'index' );
+    });
 });
