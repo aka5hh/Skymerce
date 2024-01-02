@@ -35,8 +35,8 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Name</th>
+                                <th>Photo</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -44,8 +44,16 @@
                         <tbody>
                             @foreach ($categories as $category)
                                 <tr>
-                                    <td>{{ $category->id }}</td>
                                     <td>{{ $category->name }}</td>
+                                    
+                                        <td>
+                                            @if ($category->image!='')
+                                            <img  src="{{ asset('uploads/category/' .$category->image) }}" alt=" Photo"/>
+                                            @else
+                                            <img  src="{{asset('uploads/contents')}}/avatar.png" alt=" Photo"/>
+                                            @endif   
+                                        </td> 
+                                    
                                     <td>{{ $category->status == '1' ? 'Visible' : 'Hidden' }}</td>
                                     <td>
                                         <a href="{{ url('admin/category/' . $category->id . '/edit') }}" class="btn btn-success">Edit</a>
