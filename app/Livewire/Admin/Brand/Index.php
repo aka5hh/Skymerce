@@ -26,10 +26,10 @@ class Index extends Component
 
     public function resetInput()
     {
-
-        $this->name   = 'NULL';
-        $this->slug   = 'NULL';
-        $this->status = 'NULL';
+        $this->name   = null;
+        $this->slug   = null;
+        $this->status = null;
+        $this->brand_id = null;
     }
 
     public function storeBrand()
@@ -45,15 +45,18 @@ class Index extends Component
         $this->resetInput();
     }
 
-    public function closeModal(){
+    public function closeModal()
+    {
         $this->resetInput();
     }
 
-    public function openModal(){
+    public function openModal()
+    {
         $this->resetInput();
     }
 
-    public function editBrand(int $brand_id){
+    public function editBrand(int $brand_id)
+    {
         $this->brand_id = $brand_id;
         $brand = Brand::find($brand_id);
         $this->name = $brand->name;
@@ -61,7 +64,8 @@ class Index extends Component
         $this->status = $brand->status;
     }
 
-    public function updateBrand(){
+    public function updateBrand()
+    {
         $validatedData = $this->validate();
         Brand::findOrFail($this->brand_id)->update([
             'name' => $this->name,
@@ -69,6 +73,19 @@ class Index extends Component
             'status' => $this->status == true ? '1' : '0',
         ]);
         session()->flash('message', 'Brand Updated Successfully');
+        $this->dispatch('close-modal');
+        $this->resetInput();
+    }
+
+    public function deleteBrand($brand_id)
+    {
+        $this->brand_id = $brand_id;
+    }
+    
+    public function destroyBrand()
+    {
+        Brand::findOrFail($this->brand_id)->delete();
+        session()->flash('message', 'Brand Deleted Successfully');
         $this->dispatch('close-modal');
         $this->resetInput();
     }
