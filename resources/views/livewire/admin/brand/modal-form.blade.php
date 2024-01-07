@@ -9,27 +9,33 @@
             </div>
             <form wire:submit.prevent="storeBrand">
                 <div class="modal-body">
-                    <div class="md-3">
-                        <label>Brand Name</label>
-                        <input type="text" wire:model.defer="name" class="form-control">
-                        @error('name')
-                            <small class="text-danger">{{ $message }}</small>
-                        @enderror
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label">Brand Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" wire:model.defer="name" class="form-control">
+                            @error('name')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
                     </div>
-                    <div class="md-3">
-                        <label>Brand slug</label>
-                        <input type="text" wire:model.defer="slug" class="form-control">
-                        @error('slug')
-                            <small class="text-danger">{{ $message }}</small>
-                        @enderror
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label">Brand Slug</label>
+                        <div class="col-sm-9">
+                            <input type="text" wire:model.defer="slug" class="form-control">
+                            @error('slug')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
                     </div>
-                    <div class="md-3">
-                        <label>Status</label>
-                        <input type="checkbox" wire:model.defer="status" style="width:130px;" />Checked = Visible,
-                        Un-checked = Hidden
-                        @error('status')
-                            <small class="text-danger">{{ $message }}</small>
-                        @enderror
+                    <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label">Status</label>
+                        <div class="col-sm-9">
+                            <input type="checkbox" wire:model.defer="status" class="form-check-input">
+                            Checked = Visible, Unchecked = Hidden
+                            @error('status')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -37,7 +43,6 @@
                         data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary text-white">Save</button>
                 </div>
-
             </form>
         </div>
     </div>
@@ -59,32 +64,36 @@
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
-
             <div wire:loading.remove>
                 <form wire:submit.prevent="updateBrand">
-
                     <div class="modal-body">
-                        <div class="md-3">
-                            <label>Brand Name</label>
-                            <input type="text" wire:model.defer="name" class="form-control">
-                            @error('name')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
+                        <div class="mb-3 row">
+                            <label class="col-sm-3 col-form-label">Brand Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" wire:model.defer="name" class="form-control">
+                                @error('name')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
                         </div>
-                        <div class="md-3">
-                            <label>Brand slug</label>
-                            <input type="text" wire:model.defer="slug" class="form-control">
-                            @error('slug')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
+                        <div class="mb-3 row">
+                            <label class="col-sm-3 col-form-label">Brand Slug</label>
+                            <div class="col-sm-9">
+                                <input type="text" wire:model.defer="slug" class="form-control">
+                                @error('slug')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
                         </div>
-                        <div class="md-3">
-                            <label>Status</label>
-                            <input type="checkbox" wire:model.defer="status" style="width:130px;" />Checked = Visible,
-                            Un-checked = Hidden
-                            @error('status')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
+                        <div class="mb-3 row">
+                            <label class="col-sm-3 col-form-label">Status</label>
+                            <div class="col-sm-9">
+                                <input type="checkbox" wire:model.defer="status" class="form-check-input">
+                                Checked = Visible, Unchecked = Hidden
+                                @error('status')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -92,7 +101,6 @@
                             data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary text-white">Update</button>
                     </div>
-
                 </form>
             </div>
         </div>
@@ -117,10 +125,9 @@
                 </div>
             </div>
             <div wire:loading.remove>
-
                 <form wire:submit.prevent="destroyBrand">
                     <div class="modal-body">
-                        <h4>Are you sure you wand to delete this brand?</h4>
+                        <h4>Are you sure you want to delete this brand?</h4>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" wire:click="closeModal"
@@ -128,7 +135,6 @@
                         <button type="submit" class="btn btn-primary text-white">Delete</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <div>
-
     @include('livewire.admin.brand.modal-form')
+    
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -43,6 +43,7 @@
         </div>
     </div>
 </div>
+
 @push('scripts')
     <script>
         window.addEventListener('close-modal', event => {
