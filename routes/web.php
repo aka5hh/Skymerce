@@ -46,5 +46,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
     Route::controller(ProductController::class)->group(function(){
         Route::get('/products', 'index' );
+        Route::get('/products/create', 'create' );
+        Route::post('/products','store' );
     });
 });
