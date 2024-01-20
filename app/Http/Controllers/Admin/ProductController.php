@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Support\ValidatedData;
 use App\Http\Requests\ProductFormRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Category;
-use App\Models\Brand;
 use App\Models\Product;
-use Illuminate\Contracts\Support\ValidatedData;
+use App\Models\Brand;
 
 class ProductController extends Controller
 {
@@ -51,11 +51,12 @@ class ProductController extends Controller
         if ($request->hasFile('image')) {
             $uploadPath = 'uploads/products/';
 
+            $i = 1;
             foreach ($request->file('image') as $imageFile) {
                 $extension = $imageFile->getClientOriginalExtension();
-                $filename = time() . '.' . $extension;
+                $filename = time() . $i++ . '.' . $extension;
                 $imageFile->move($uploadPath, $filename);
-                $finalImagePathName = $uploadPath.'.'.$filename;
+                $finalImagePathName = $uploadPath.$filename;
 
                 $product->productImages()->create([
                     'product_id' => $product->id,
