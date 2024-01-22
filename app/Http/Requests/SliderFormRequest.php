@@ -11,7 +11,7 @@ class SliderFormRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,9 +22,9 @@ class SliderFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required','string','max:255'],
-            'description' => ['required','string','max:800'],
-            'image' => ['required','mimes:jpeg,jpg,png'],
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:800'],
+            'image' => ['nullable','image', 'mimes:jpeg,jpg,png'],
             'status' => ['nullable'],
         ];
     }
