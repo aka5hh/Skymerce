@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +50,9 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
         Route::get('/products/create', 'create' );
         Route::post('/products','store' );
         Route::get('/products/{product}/edit','edit');
-        Route::post('/products/{product}','update');
+        Route::put('/products/{product}','update');
+        Route::get('/products/{product_id}/delete', 'destroy');
+
+        Route::get('/product-image/{product_image_id}/delete', 'destroyImage');
     });
 });

@@ -45,9 +45,9 @@
                                     <td>{{ $product->status == '1' ? 'Visible' : 'Hidden' }}</td>
                                     <td>
                                         <a href="{{ url('admin/products/' . $product->id . '/edit') }}" class="btn btn-sm btn-success">Edit</a>
-                                        <a href="{{ url('admin/products/' . $product->id . '/delete') }}"
-                                            onclick="return confirm('Are you sure you want to delete this product?')"
-                                            class="btn btn-sm btn-danger">Delete</a>
+                                        <a {{-- wire:click="deleteProduct({{$product->id}})" data-bs-toggle="modal" data-bs-target="#deleteModal"   --}}
+                                        href="{{ url('admin/products/' . $product->id . '/delete') }}" onclick="return confirm('Are you sure you want to delete this product?')"
+                                        class="btn btn-sm btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @empty
@@ -61,4 +61,25 @@
             </div>
         </div>
     </div>
+
+    {{-- <div wire:ignore.self class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Product Delete</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form wire:submit.prevent="destoryProduct" >
+                    <div class="modal-body">
+                    <h6>Are you sure to delete this product?</h6>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> --}}
 @endsection

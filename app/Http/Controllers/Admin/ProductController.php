@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Contracts\Support\ValidatedData;
 use App\Http\Requests\ProductFormRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use App\Models\ProductImage;
 use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Product;
@@ -125,4 +127,47 @@ class ProductController extends Controller
             return redirect('admin/products')->with('message', 'No Product Found');
         }
     }
+    public function destroyImage(int $product_image_id)
+    {
+        $productImage = ProductImage::findOrFail($product_image_id);
+        if (File::exists($productImage->image)) {
+            File::delete($productImage->image);
+        }
+        $productImage->delete();
+
+        return redirect()->back()->with('message', 'Product Image Deleted Successfully');
+    }
+
+    public function destroy(int $product_id)
+    {
+        $product = Product::findOrFail($product_id);
+        if($product->productImages()){
+            foreach($product->productImages as $image){
+                if (File::exists($image->image)) {
+                    File::delete($image->image);
+                }
+            }
+        }
+        $product->delete();
+        return redirect()->back()->with('message', 'Product Deleted Successfully');
+    }
+
+    // public function deleteProduct(int $product_id)
+    // {
+    //     $this->product_id = $product_id;
+    // }
+
+    // public function destoryProduct()
+    // {
+    //     $product = Product::find($this->product_id);
+    //     $path = 'uploads/products/' . $product->image;
+    //     if (File::exists($path)) {
+    //         File::delete($path);
+    //     }
+    //     $product->delete();
+    //     session()->flash('message', 'Product has been deleted successfully');
+    //     $this->dispatch('close-modal');
+    // }
+
+
 }
