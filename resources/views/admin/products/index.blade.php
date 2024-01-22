@@ -45,9 +45,8 @@
                                     <td>{{ $product->status == '1' ? 'Visible' : 'Hidden' }}</td>
                                     <td>
                                         <a href="{{ url('admin/products/' . $product->id . '/edit') }}" class="btn btn-sm btn-success">Edit</a>
-                                        <a {{-- wire:click="deleteProduct({{$product->id}})" data-bs-toggle="modal" data-bs-target="#deleteModal"   --}}
-                                        href="{{ url('admin/products/' . $product->id . '/delete') }}" onclick="return confirm('Are you sure you want to delete this product?')"
-                                        class="btn btn-sm btn-danger">Delete</a>
+                                        <a class="btn btn-sm btn-danger" href="#" id="Delete" data-bs-toggle="modal" data-bs-target="#DeleteModal"
+                                        data-id="{{ $product->id }}">Delete</a>
                                     </td>
                                 </tr>
                             @empty
@@ -62,24 +61,25 @@
         </div>
     </div>
 
-    {{-- <div wire:ignore.self class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Product Delete</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- delete modal code -->
+    <div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="DeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form action="{{ url('admin/products/' . $product->id . '/delete') }}" method="GET">
+                @csrf
+                <div class="modal-content modal_content">
+                    <div class="modal-header modal_header">
+                        <h4 class="modal-title modal_title" id="DeleteModalLabel"><i class="fab fa-gg-circle"></i>Confirm Message</h4>
+                    </div>
+                    <div class="modal-body modal_body">
+                        Do you want to delete this product ?
+                        <input type="hidden" name="modal_id" id="modal_id"/>
+                    </div>
+                    <div class="modal-footer modal_footer">
+                        <button type="submit" class="btn btn-sm btn-success">Confirm</button>
+                        <button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
                 </div>
-                <form wire:submit.prevent="destoryProduct" >
-                    <div class="modal-body">
-                    <h6>Are you sure to delete this product?</h6>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                    </div>
-                </form>
-            </div>
+            </form>
         </div>
-    </div> --}}
+    </div>
 @endsection
