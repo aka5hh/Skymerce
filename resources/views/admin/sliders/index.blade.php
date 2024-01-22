@@ -36,7 +36,7 @@
                                     <td>
                                         <img src="{{ asset($slider->image) }}" alt="Slider Image" width="70px" />
                                     </td>
-                                    <td>{{ $slider->status == '1' ? 'Hidden' : 'Visible' }}</td>
+                                    <td>{{ $slider->status == '1' ? 'Visible' : 'Hidden' }}</td>
                                     <td>
                                         <a href="{{ url('admin/sliders/' . $slider->id . '/edit') }}"
                                             class="btn btn-success">Edit</a>

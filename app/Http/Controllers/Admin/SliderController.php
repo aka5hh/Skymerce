@@ -44,4 +44,9 @@ class SliderController extends Controller
 
         return redirect('admin/sliders')->with('message', 'Slider Added Successfully');
     }
+    public function edit(Slider $slider)
+    {
+        $slider = Slider::findOrFail($slider->id);
+        return view('admin.sliders.edit', compact('slider'));
+    }
 }
