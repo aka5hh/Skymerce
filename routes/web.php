@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -54,5 +55,9 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
         Route::get('/products/{product_id}/delete', 'destroy');
 
         Route::get('/product-image/{product_image_id}/delete', 'destroyImage');
+    });
+
+    Route::controller(SliderController::class)->group(function(){
+        Route::get('sliders','index');
     });
 });
