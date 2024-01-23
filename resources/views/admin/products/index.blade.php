@@ -1,5 +1,8 @@
 @extends('layouts.admin')
 
+@section('title', 'Products')
+
+
 @section('content')
     <div class="row">
         <div class="col-md-12 grid-margin">

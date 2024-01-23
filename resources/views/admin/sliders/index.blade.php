@@ -1,5 +1,8 @@
 @extends('layouts.admin')
 
+@section('title', 'Slider')
+
+
 @section('content')
     <div class="row">
         <div class="col-md-12 grid-margin">
@@ -40,9 +43,6 @@
                                     <td>
                                         <a href="{{ url('admin/sliders/' . $slider->id . '/edit') }}"
                                             class="btn btn-success">Edit</a>
-                                        {{-- <a href="{{ url('admin/sliders/' . $slider->id . '/delete') }}"
-                                            onclick="return confirm('Are you sure you want to delete this slider?')"
-                                            class="btn btn-danger">Delete</a> --}}
                                         <a class="btn btn-danger" href="#" id="Delete" data-bs-toggle="modal" data-bs-target="#DeleteModal"
                                             data-id="{{ $slider->id }}">Delete</a>
                                     </td>

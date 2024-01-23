@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+
+@section('title', 'Brand')
+
 @section('content')
 
 <div>

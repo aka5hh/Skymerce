@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -20,11 +21,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+ 
 Auth::routes();
+
+Route::get('/',[FrontendController::class, 'index']);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

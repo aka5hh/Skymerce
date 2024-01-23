@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title', 'Edit Slider')
 @section('content')
     <div class="row">
         <div class="col-md-12 grid-margin">
