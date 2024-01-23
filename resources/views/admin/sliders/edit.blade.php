@@ -9,7 +9,7 @@
                 <div class="card-header">
                     <h3>
                         Edit Slider
-                        <a href="{{ url('admin/sliders') }}" class="btn btn-primary btn-sm text-white float-end">Back</a>
+                        <a href="{{ url('admin/sliders/'.$slider->id) }}" class="btn btn-primary btn-sm text-white float-end">Back</a>
                     </h3>
                 </div>
                 <div class="card-body">
@@ -24,7 +24,7 @@
                     @endif
                     <form action="{{ url('admin/sliders/'.$slider->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT'))
+                        @method('PUT')
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label>Title</label>
@@ -40,8 +40,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label>Image</label>
-                                <input type="file" name="image" class="form-control" />
-                                <img src="{{ asset($slider->image) }}" alt="Slider Image" width="80">
+                                <img src="{{ asset($slider->image) }}" alt="Slider Image" width="200px" />
                             </div>
                         </div>
                         <div class="col-md-6">

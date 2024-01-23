@@ -49,4 +49,20 @@ class SliderController extends Controller
         $slider = Slider::findOrFail($slider->id);
         return view('admin.sliders.edit', compact('slider'));
     }
+     public function update(int $slider_id, SliderFormRequest $request)
+     {
+        $validatedData = $request->validated();
+        $slider = Slider::findOrFail($slider_id);
+        if($slider)
+        {
+            $slider->update([
+            'title' => $validatedData['title'],
+            'description' => $validatedData['description'],
+            'status' => $request->status == true ? 1 : 0,
+            ]);
+            return redirect('admin/sliders')->with('message', 'Slider Updated Successfully');
+        }else{
+            return redirect('admin/sliders')->with('message', 'Slider Update Failed');
+        }
+     }
 }
