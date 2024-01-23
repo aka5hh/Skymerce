@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('admin/vendors/base/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
     <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" />
+    <link rel="stylesheet" href="{{ asset('admin/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     @livewireStyles
 </head>
