@@ -40,9 +40,11 @@
                                     <td>
                                         <a href="{{ url('admin/sliders/' . $slider->id . '/edit') }}"
                                             class="btn btn-success">Edit</a>
-                                        <a href="{{ url('admin/sliders/' . $slider->id . '/delete') }}"
+                                        {{-- <a href="{{ url('admin/sliders/' . $slider->id . '/delete') }}"
                                             onclick="return confirm('Are you sure you want to delete this slider?')"
-                                            class="btn btn-danger">Delete</a>
+                                            class="btn btn-danger">Delete</a> --}}
+                                        <a class="btn btn-danger" href="#" id="Delete" data-bs-toggle="modal" data-bs-target="#DeleteModal"
+                                            data-id="{{ $slider->id }}">Delete</a>
                                     </td>
                                 </tr>
                             @empty
@@ -58,7 +60,7 @@
     </div>
 
     <!-- delete modal code -->
-    {{-- <div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="DeleteModalLabel" aria-hidden="true">
+    <div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="DeleteModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form action="{{ url('admin/sliders/' . $slider->id . '/delete') }}" method="GET">
                 @csrf
@@ -78,5 +80,5 @@
                 </div>
             </form>
         </div>
-    </div> --}}
+    </div>
 @endsection
