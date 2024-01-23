@@ -151,23 +151,5 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->back()->with('message', 'Product Deleted Successfully');
     }
-
-    // public function deleteProduct(int $product_id)
-    // {
-    //     $this->product_id = $product_id;
-    // }
-
-    // public function destoryProduct()
-    // {
-    //     $product = Product::find($this->product_id);
-    //     $path = 'uploads/products/' . $product->image;
-    //     if (File::exists($path)) {
-    //         File::delete($path);
-    //     }
-    //     $product->delete();
-    //     session()->flash('message', 'Product has been deleted successfully');
-    //     $this->dispatch('close-modal');
-    // }
-
-
+    
 }
