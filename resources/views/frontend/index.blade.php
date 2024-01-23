@@ -24,7 +24,7 @@
         <div class="carousel-inner">
             @foreach ($sliders as $key => $slider)
                 <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                    <img src="{{ $slider->image }}" class="d-block w-100" style="height: 552px;">
+                    <img src="{{ $slider->image }}" class="d-block w-100" style="height: 561px;">
                     <div class="carousel-caption d-none d-md-block">
                         <div class="custom-carousel-content">
                             <h1>

@@ -28,6 +28,8 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/',[FrontendController::class, 'index']);
+Route::get('/collections',[FrontendController::class, 'categories']);
+Route::get('/collections/moblie',[FrontendController::class, 'categories']);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
